@@ -1,6 +1,24 @@
 <template>
-  <q-page class="flex flex-center">
-    <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
+  <q-page class="flex">
+
+    <q-tabs animated swipable color="tertiary" glossy align="left">
+
+      <q-tab default name="taba" slot="title" label="TabA" />
+      <q-tab name="tabb" slot="title" label="TabB" />
+
+      <q-tab-pane keep-alive name="taba">
+        <q-scroll-area class="scroll-area">
+          <div v-for="n in 10" :key="n.id">
+            the quick brown fox jumped over the lazy dog
+          </div>
+        </q-scroll-area>
+      </q-tab-pane>
+
+      <q-tab-pane keep-alive name="tabb">
+        <div>tab b content</div>
+      </q-tab-pane>
+
+    </q-tabs>
   </q-page>
 </template>
 
@@ -8,7 +26,30 @@
 </style>
 
 <script>
+
+import {
+  QTabs,
+  QTab,
+  QTabPane,
+  QScrollArea
+} from 'quasar'
+
 export default {
-  name: 'PageIndex'
+  name: 'PageIndex',
+
+  components: {
+    QTabs,
+    QTab,
+    QTabPane,
+    QScrollArea
+  }
 }
 </script>
+
+<style>
+
+.scroll-area {
+  width: 100%;
+  height: 500px;
+}
+</style>

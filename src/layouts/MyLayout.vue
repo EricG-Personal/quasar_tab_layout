@@ -59,14 +59,28 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-layout-footer>
+      footer content
+    </q-layout-footer>
   </q-layout>
 </template>
 
 <script>
-import { openURL } from 'quasar'
+import {
+  openURL,
+  QLayout,
+  QLayoutFooter
+} from 'quasar'
 
 export default {
   name: 'MyLayout',
+
+  components: {
+    QLayout,
+    QLayoutFooter
+  },
+
   data () {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop
