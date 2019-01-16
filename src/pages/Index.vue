@@ -1,8 +1,8 @@
 <template>
-  <q-page class="page-content">
+  <q-page class="column page-content ">
 
-    <q-scroll-area class="scroll-area">
-      <div v-for="n in 100" :key="n.id">
+    <q-scroll-area class="col scroll-area">
+      <div v-for="n in 100" :key="n.id" class="scroll-row-content">
         the quick brown fox jumped over the lazy dog
       </div>
     </q-scroll-area>
@@ -27,6 +27,7 @@
 
       </q-tabs>
     </div> -->
+
   </q-page>
 </template>
 
@@ -36,9 +37,6 @@
 <script>
 
 import {
-  QTabs,
-  QTab,
-  QTabPane,
   QScrollArea
 } from 'quasar'
 
@@ -46,9 +44,6 @@ export default {
   name: 'PageIndex',
 
   components: {
-    QTabs,
-    QTab,
-    QTabPane,
     QScrollArea
   }
 }
@@ -57,12 +52,12 @@ export default {
 <style>
 
 .page-content {
-  background-color: lightgray;
-
+  background-color: green;
+/*
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: stretch; */
 }
 
 .main {
@@ -75,8 +70,16 @@ export default {
 }
 
 .scroll-area {
-  width: 100%;
-  height: 100px;
-  background-color: yellow;
+  /* width: 100%;
+  height: 100px; */
+  background-color: red;
 }
+
+.scroll-row-content {
+  /* width: 100%;
+  height: 100px; */
+  background-color: blue;
+  color: white;
+}
+
 </style>
