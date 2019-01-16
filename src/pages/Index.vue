@@ -1,11 +1,13 @@
 <template>
   <q-page class="page-content">
 
-    <div class="title-content">
-      title content
-    </div>
+    <q-scroll-area class="scroll-area">
+      <div v-for="n in 100" :key="n.id">
+        the quick brown fox jumped over the lazy dog
+      </div>
+    </q-scroll-area>
 
-    <div class="main">
+    <!-- <div class="main">
       <q-tabs animated swipable color="tertiary" glossy align="left">
 
         <q-tab default name="taba" slot="title" label="TabA" />
@@ -24,11 +26,7 @@
         </q-tab-pane>
 
       </q-tabs>
-    </div>
-
-    <div class="key-content">
-      key content
-    </div>
+    </div> -->
   </q-page>
 </template>
 
