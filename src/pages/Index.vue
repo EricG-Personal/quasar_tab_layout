@@ -1,23 +1,25 @@
 <template>
-  <q-page class="column page-content ">
+  <q-page class="column page-background">
 
-    <!-- <q-scroll-area :class="classScrollArea">
-      <div v-for="n in 100" :key="n.id" class="scroll-row-content">
-        the quick brown fox jumped over the lazy dog
-      </div>
-    </q-scroll-area> -->
+    <q-resize-observable @resize="onResize" />
 
-    <q-scroll-area :style="styleScrollArea" ref="a">
-      <div v-for="n in 100" :key="n.id" class="scroll-row-content">
-        the quick brown fox jumped over the lazy dog
+    <q-scroll-area :style="styleScrollArea">
+
+      <!-- <div>
+        top
+      </div> -->
+
+      <div v-for="n in 500" :key="n.id">
+        Lorem ipsum dolor sit amet, consectetur adipisicing
+        elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua2.
       </div>
+
+      <!-- <div class="scroll-area-content">
+        bottom
+      </div> -->
+
     </q-scroll-area>
-
-    <!-- <q-scroll-area class="col scroll-area">
-      <div v-for="n in 100" :key="n.id" class="scroll-row-content">
-        the quick brown fox jumped over the lazy dog
-      </div>
-    </q-scroll-area> -->
 
   </q-page>
 </template>
@@ -27,47 +29,65 @@
 
 <script>
 
-// import { dom } from 'quasar'
-// const { height, width } = dom
+import { dom } from 'quasar'
+const { height } = dom
 
 export default {
   name: 'PageIndex',
 
+  mounted: function () {
+    console.log('is mounted')
+
+    this.pageHeight = height(this.$el)
+
+    console.log(this.pageHeight)
+  },
+
+  data: function () {
+    console.log('data referenced')
+
+    return {
+      pageHeight: '500px'
+    }
+  },
+
   computed: {
     styleScrollArea: function () {
-      // console.log(
-      //   height(this.$refs.a),
-      //   width(this.$refs.a)
-      // )
-
+      console.log('styleScrollArea referenced ' + this.pageHeight)
       return {
-        // 'height': '50vh',
-        'height': 'calc(100vh - 25vh)',
-        'background-color': 'yellow'
+        backgroundColor: this.pageHeight % 2 === 0 ? 'yellow' : 'green',
+        height: this.pageHeight
       }
-    },
+    }
+  },
 
-    classScrollArea: function () {
-      return 'scroll-area'
+  methods: {
+
+    onResize (size) {
+      this.pageHeight = size.height
+      console.log(this.pageHeight)
     }
 
   }
 }
 </script>
 
-<style>
+<style lang="stylus">
 
-.page-content {
-  background-color: green;
-}
-.scroll-area {
+.page-background {
   background-color: red;
-  height: calc(100vh - 25vh);
 }
 
-.scroll-row-content {
-  background-color: blue;
-  color: white;
+.main {
+    background-color: green;
+}
+
+.scroll-area {
+  background-color: yellow;
+}
+
+.scroll-area-content {
+  background-color: teal;
 }
 
 </style>
