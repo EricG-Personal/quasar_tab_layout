@@ -47,7 +47,7 @@ export default {
     console.log('data referenced')
 
     return {
-      pageHeight: '500px'
+      pageHeight: '500'
     }
   },
 
@@ -56,7 +56,7 @@ export default {
       console.log('styleScrollArea referenced ' + this.pageHeight)
       return {
         backgroundColor: this.pageHeight % 2 === 0 ? 'yellow' : 'green',
-        height: this.pageHeight
+        height: this.pageHeight + 'px'
       }
     }
   },
