@@ -55,7 +55,12 @@ module.exports = function (ctx) {
         'QItemMain',
         'QItemSide',
         'QResizeObservable',
-        'QWindowResizeObservable'
+        'QWindowResizeObservable',
+        'QTabs',
+        'QTab',
+        'QTabPane',
+        'QScrollArea'
+
       ],
       directives: [
         'Ripple'

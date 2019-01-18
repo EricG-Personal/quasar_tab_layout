@@ -60,7 +60,7 @@
       <router-view />
     </q-page-container>
 
-    <q-layout-footer>
+    <q-layout-footer class="footer-style">
       footer content
     </q-layout-footer>
   </q-layout>
@@ -93,4 +93,7 @@ export default {
 </script>
 
 <style>
+.footer-style {
+  background-color: blue;
+}
 </style>
