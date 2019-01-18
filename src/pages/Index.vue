@@ -1,64 +1,100 @@
 <template>
-  <q-page class="page-content">
+  <q-page class="column no-wrap" :style="stylePage">
 
-    <div class="title-content">
-      title content
+    <q-resize-observable @resize="onPageResize" />
+    <q-window-resize-observable @resize="onWindowResize" />
+
+    <div class="header-content" ref="headerContent">
+      page header content
     </div>
 
     <div class="main">
-      <q-tabs animated swipable color="tertiary" glossy align="left">
-
-        <q-tab default name="taba" slot="title" label="TabA" />
-        <q-tab name="tabb" slot="title" label="TabB" />
-
-        <q-tab-pane keep-alive name="taba">
-          <q-scroll-area class="scroll-area">
-            <div v-for="n in 100" :key="n.id">
-              the quick brown fox jumped over the lazy dog
-            </div>
-          </q-scroll-area>
-        </q-tab-pane>
-
-        <q-tab-pane keep-alive name="tabb">
-          <div>tab b content</div>
-        </q-tab-pane>
-
-      </q-tabs>
+      <div style="overflow-y: auto">
+        <div>
+          top
+        </div>
+        <div v-for="x in 100" :key="x.id" >
+          some content
+        </div>
+        <div>
+          bottom
+        </div>
+      </div>
     </div>
 
-    <div class="key-content">
-      key content
+    <div class="footer-content">
+      page footer content
     </div>
+
   </q-page>
 </template>
 
 <style>
 </style>
-
 <script>
 
-import {
-  QTabs,
-  QTab,
-  QTabPane,
-  QScrollArea
-} from 'quasar'
+import { dom } from 'quasar'
+const { height } = dom
 
 export default {
   name: 'PageIndex',
 
-  components: {
-    QTabs,
-    QTab,
-    QTabPane,
-    QScrollArea
+  mounted: function () {
+    console.log('is mounted')
+
+    this.pageHeight = height(this.$el)
+    this.$el.style.maxHeight = this.$el.style.minHeight
+
+    // console.log(this.$refs)
+  },
+
+  beforeUpdate: function () {
+    console.log('beforeUpdate')
+    // hello
+    // console.log(this.$refs)
+  },
+
+  computed: {
+    stylePage: function () {
+      console.log('styleScrollArea referenced ')
+      // console.log(height(this.$el))
+
+      return {
+        backgroundColor: 'blue',
+        'overflow-y': 'hidden',
+        'justify-content': 'flex-end'
+
+      }
+    }
+  },
+
+  methods: {
+    onPageResize (size) {
+      console.log('page resized')
+    },
+
+    onWindowResize (size) {
+      console.log('window resized')
+      console.log(this.$el.style.minHeight)
+    }
   }
 }
+
 </script>
 
 <style>
 
-.page-content {
+.main {
+  flex-grow: 1;
+  background-color: green;
+  overflow-y: auto;
+}
+
+.header-content, .main, .footer-content {
+  flex-shrink: 0;
+}
+
+/* .page-content {
   background-color: lightgray;
 
   min-height: 100%;
@@ -80,5 +116,6 @@ export default {
   width: 100%;
   height: 100px;
   background-color: yellow;
-}
+} */
+
 </style>

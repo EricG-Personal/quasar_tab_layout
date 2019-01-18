@@ -53,7 +53,10 @@ module.exports = function (ctx) {
         'QListHeader',
         'QItem',
         'QItemMain',
-        'QItemSide'
+        'QItemSide',
+        'QResizeObservable',
+        'QWindowResizeObservable'
+
       ],
       directives: [
         'Ripple'

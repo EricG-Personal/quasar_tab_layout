@@ -61,7 +61,8 @@
     </q-page-container>
 
     <q-layout-footer>
-      footer content
+      footer content<br />
+      other footer content
     </q-layout-footer>
   </q-layout>
 </template>
