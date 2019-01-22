@@ -43,8 +43,8 @@ export default {
     console.log('is mounted')
     console.log(this.$el.style.minHeight)
 
-    this.pageHeight = height(this.$el)
-    this.$el.style.maxHeight = this.$el.style.minHeight
+    // this.pageHeight = height(this.$el)
+    // this.$el.style.maxHeight = this.$el.style.minHeight
 
     // console.log(this.$refs)
   },
@@ -66,7 +66,14 @@ export default {
         // 'justify-content': 'flex-end'
 
       }
-    }
+    },
+
+    watch: {
+      $el.style.minHeight (val) {
+        console.log( 'watcher hit ' + val )
+        this.$el.style.maxHeight = val
+        this.pageHeight = val
+      }
   },
 
   methods: {
