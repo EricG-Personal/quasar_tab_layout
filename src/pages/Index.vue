@@ -1,8 +1,8 @@
 <template>
   <q-page class="column no-wrap" :style="stylePage">
 
-    <q-resize-observable @resize="onPageResize" />
-    <q-window-resize-observable @resize="onWindowResize" />
+    <!-- <q-resize-observable @resize="onPageResize" />
+    <q-window-resize-observable @resize="onWindowResize" /> -->
 
     <div class="header-content" ref="headerContent">
       page header content
@@ -33,8 +33,8 @@
 </style>
 <script>
 
-import { dom } from 'quasar'
-const { height } = dom
+// import { dom } from 'quasar'
+// const { height } = dom
 
 export default {
   name: 'PageIndex',
@@ -66,14 +66,15 @@ export default {
         // 'justify-content': 'flex-end'
 
       }
-    },
+    }
+  },
 
-    watch: {
-      $el.style.minHeight (val) {
-        console.log( 'watcher hit ' + val )
-        this.$el.style.maxHeight = val
-        this.pageHeight = val
-      }
+  watch: {
+    '$el.style.minHeight' (val) {
+      console.log('watcher hit ' + val)
+      this.$el.style.maxHeight = val
+      this.pageHeight = val
+    }
   },
 
   methods: {
