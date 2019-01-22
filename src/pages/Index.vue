@@ -41,6 +41,7 @@ export default {
 
   mounted: function () {
     console.log('is mounted')
+    console.log(this.$el.style.minHeight)
 
     this.pageHeight = height(this.$el)
     this.$el.style.maxHeight = this.$el.style.minHeight
@@ -61,8 +62,8 @@ export default {
 
       return {
         backgroundColor: 'blue',
-        'overflow-y': 'hidden',
-        'justify-content': 'flex-end'
+        'overflow-y': 'hidden'
+        // 'justify-content': 'flex-end'
 
       }
     }
