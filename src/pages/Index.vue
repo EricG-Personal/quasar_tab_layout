@@ -4,94 +4,75 @@
     <!-- <q-resize-observable @resize="onPageResize" />
     <q-window-resize-observable @resize="onWindowResize" /> -->
 
-    <div class="header-content" ref="headerContent">
+    <div class="sticky-top" ref="headerContent">
       page header content
     </div>
 
-    <div class="main">
-      <div style="overflow-y: auto">
-        <div>
-          top
-        </div>
-        <div v-for="x in 100" :key="x.id" >
-          some content
-        </div>
-        <div>
-          bottom
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-content">
+    <div class="sticky-bottom">
       page footer content
     </div>
 
+    <div :style="scrollStyle">
+      <div v-for="x in 100" :key="x" >
+        some content
+      </div>
+    </div>
   </q-page>
 </template>
 
-<style>
-</style>
 <script>
-
-// import { dom } from 'quasar'
-// const { height } = dom
-
 export default {
   name: 'PageIndex',
 
   mounted: function () {
     console.log('is mounted')
-    console.log(this.$el.style.minHeight)
-
-    // this.pageHeight = height(this.$el)
-    // this.$el.style.maxHeight = this.$el.style.minHeight
-
-    // console.log(this.$refs)
   },
 
   beforeUpdate: function () {
     console.log('beforeUpdate')
-    // hello
-    // console.log(this.$refs)
   },
 
   computed: {
-    stylePage: function () {
-      console.log('styleScrollArea referenced ')
-      // console.log(height(this.$el))
-
+    scrollStyle: function () {
       return {
-        backgroundColor: 'blue',
-        'overflow-y': 'hidden'
-        // 'justify-content': 'flex-end'
-
+        position: 'fixed',
+        // 50 + 59
+        top: '109px',
+        width: '100%',
+        // 40 + 59
+        bottom: '99px',
+        overflow: 'auto'
       }
     }
   },
 
   watch: {
-    '$el.style.minHeight' (val) {
-      console.log('watcher hit ' + val)
-      this.$el.style.maxHeight = val
-      this.pageHeight = val
-    }
   },
 
   methods: {
-    onPageResize (size) {
-      console.log('page resized')
-    },
-
-    onWindowResize (size) {
-      console.log('window resized')
-      console.log(this.$el.style.minHeight)
-    }
   }
 }
 
 </script>
 
 <style>
+div.sticky-top {
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  background-color: yellow;
+  padding: 20px;
+  font-size: 16px;
+}
+
+div.sticky-bottom {
+  position: fixed;
+  bottom: 42px;
+  width: 100%;
+  background-color: yellow;
+  padding: 20px;
+  font-size: 16px;
+}
 
 .main {
   flex-grow: 1;
@@ -99,9 +80,9 @@ export default {
   overflow-y: auto;
 }
 
-.header-content, .main, .footer-content {
+/* .header-content, .main, .footer-content {
   flex-shrink: 0;
-}
+} */
 
 /* .page-content {
   background-color: lightgray;
